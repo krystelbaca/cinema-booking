@@ -1,0 +1,20 @@
+{
+  "name": "cinema-booking",
+  "version": "1.0.0",
+  "description": "cinema booking",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/App.js",
+    "test": "test",
+    "seed": "node src/data/seed.js"
+  },
+  "author": "Krystel Baca",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0",
+    "uuid": "^10.0.0"
+  }
+}
