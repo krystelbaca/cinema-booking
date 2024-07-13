@@ -132,13 +132,22 @@ Get Availability By Seats:
     GET: '/cinema'
     Query params: seats
 
+Create a Booker:
+
+    POST: /cinema/create-account
+    Body:
+    {
+      "email": "your_email@test.com",
+      "password": "your_password"
+    }
+
 Login:
 
     POST: '/cinema/login'
     Body:
     {
-      "email": "random.account@test.com",
-      "password": "testing123$"
+      "email": "your_email@test.com",
+      "password": "your_password"
     }
 
 Create a booking:
@@ -173,11 +182,13 @@ Get my booking information:
 
 2. Create a `.env` file and copy the values from the `.env.example` file
 
-3. Seed data:
+3. Use the endpoint: `/cinema/create-account` to create a user
+
+4. Seed data:
 
         npm run seed
 
-4. Run the server:
+5. Run the server:
 
          npm start
 
