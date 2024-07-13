@@ -2,9 +2,9 @@ const { createReservation, getMyReservation } = require('../services/BookingServ
 
 const createBooking = async (req, res) => {
   try {
-    const { body } = req
-    
-    const booking = await createReservation(body)
+    const { body, account } = req
+
+    const booking = await createReservation(body, account)
 
     return res.status(201).json(booking)
   } catch (error) {
@@ -17,7 +17,13 @@ const getBooking = async (req, res) => {
   try {
     const booking = await getMyReservation(reservationCode)
 
-    return res.status(200).json(booking)
+    return res.status(200).json({
+      "Reservation Code": booking.reservationCode,
+      email: booking.email,
+      "Auditorium": booking.auditorium,
+      "Time": booking.schedule,
+      "Seats": booking.seats.join(','),
+    })
   } catch (error) {
     return error.message
   }

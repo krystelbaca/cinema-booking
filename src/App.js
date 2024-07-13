@@ -8,6 +8,8 @@ const mongoose = require('mongoose')
 
 const dotenv = require('dotenv')
 
+const auth = require('./middlewares/Authentication.js')
+
 dotenv.config()
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -21,7 +23,7 @@ if (!process.env.MONGO_URI) {
   process.exit(1)
 }
 
-mongoose.connect(mongoURI, { useNewUrlParser: true })
+mongoose.connect(mongoURI)
 
 const db = mongoose.connection
 
@@ -31,6 +33,8 @@ db.once('open', () => {
 })
 
 app.use('/', router)
+
+app.use(auth)
 
 app.listen(PORT, () => {
   console.log(`Service running at port ${PORT}`)
