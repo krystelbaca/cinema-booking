@@ -11,7 +11,12 @@ const loginAccount = async (req, res, next) => {
       return res.status(401).json({ error: 'Invalid email or password' })
     }
     const token = generateToken(account)
-    return res.status(200).json({ message: 'Login successful', account, token })
+    return res.status(200).json({ 
+      message: 'Login successful',
+      account_id: account.id,
+      email: account.email,
+      token 
+    })
   } catch(error) {
     return error.message
   }
